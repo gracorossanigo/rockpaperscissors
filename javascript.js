@@ -1,4 +1,4 @@
-let whobeatswho = {
+let whoBeatsWho = {
     "rock": "scissors",
     "paper": "rock",
     "scissors": "paper"
@@ -20,15 +20,34 @@ function getComputerChoice() {
 }
 
 function beats(a, b) {
-    if (whobeatswho[a] == b) {
+    if (whoBeatsWho[a] == b) {
         return true
-    } else {
-        return false
+    } else if (a == b) {
+        return "tie"
+    } else return false
+
+}
+
+function rockPaperScissors(computerSelection, playerSelection) {
+    computerSelection = computerSelection.toLowerCase();
+    playerSelection = playerSelection.toLowerCase();
+     if (beats(playerSelection, computerSelection) === true) {
+        return "You win! " + playerSelection + " beats " + computerSelection;
+    } else if(beats(computerSelection, playerSelection) === true){
+         return "You lose! " + computerSelection + " beats " + playerSelection
+     } else {
+         return "It's a tie!"
+     }
+
+}
+
+function game(){
+    for (let i = 0; i<5; i++){
+        rockPaperScissors();
     }
-
 }
 
-function rockPaperScissors() {
+let playerSelection = "rock";
+let computerSelection = getComputerChoice();
 
-}
-getComputerChoice();
+console.log(rockPaperScissors(playerSelection, computerSelection))
