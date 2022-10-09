@@ -43,7 +43,27 @@ function rockPaperScissors(computerSelection, playerSelection) {
 
 function game(){
     for (let i = 0; i<5; i++){
-        rockPaperScissors();
+        let computerSelection = getComputerChoice();
+        let playerSelection = prompt("What's your move?").toLowerCase();
+        let playerWins = 0;
+        let computerWins = 0;
+        switch (rockPaperScissors(computerSelection, playerSelection)) {
+            case "You win! " + playerSelection + " beats " + computerSelection:
+                playerWins++;
+                console.log("You win this round");
+                break;
+            case "You lose! " + computerSelection + " beats " + playerSelection:
+                computerWins++;
+                console.log("You lose this round");
+                break;
+            default:
+                break;
+        }
+        if (computerWins>playerWins){
+
+        }
+
+
     }
 }
 
