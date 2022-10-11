@@ -56,28 +56,25 @@ function game(){
         let playerChoice = getPlayerChoice();
         switch (rockPaperScissors(computerChoice, playerChoice)) {
             case true:
-                console.log("You win this round");
                 playerWins++;
                 break;
             case false:
-                console.log("You lose this round");
                 computerWins++;
                 break;
             case "tie":
-                console.log("You tie this round");
                 break;
             default: 
                 console.log("Did not recognize entry, defaulted to tie.");
                 break;
         }
     }
-    if (computerWins>playerWins){
-        console.log("You lost");
-        return "You lost";
-    } else if (playerWins>computerWins) {
+    if (computerWins == playerWins){
+        console.log("You tied the computer!");
+        return "You tied";
+    } else if (playerWins > computerWins) {
         console.log("You won");
         return "You won";
-    } else {console.log("You won"); return "It's a tie!"}
+    } else if (playerWins < computerWins) {console.log("You lost"); return "You lost"}
 }
 
 game();
