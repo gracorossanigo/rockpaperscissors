@@ -2,7 +2,7 @@ let whoBeatsWho = {
     "rock": "scissors",
     "paper": "rock",
     "scissors": "paper"
-};
+}
 
 function getComputerChoice() {
     let randomValue = Math.floor(Math.random() * 100);
@@ -33,15 +33,13 @@ function beats(a, b) {
 
 }
 
-function rockPaperScissors(a, b) {
-    let computerSelectionLowercase = a.toLowerCase();
-    let playerSelectionLowercase = b.toLowerCase();
-     if (beats(playerSelectionLowercase, computerSelectionLowercase) == true) {
-        return "You win! " + playerSelectionLowercase + " beats " + computerSelectionLowercase;
-    } else if(beats(computerSelectionLowercase, playerSelectionLowercase) == true){
-         return "You lose! " + computerSelectionLowercase + " beats " + playerSelectionLowercase
+function rockPaperScissors(computerChoice, playerChoice) {
+     if (beats(playerChoice.toLowerCase(), computerChoice.toLowerCase()) == true) {
+        return "You win! " + playerChoice + " beats " + computerChoice;
+    } else if (beats(computerChoice, playerChoice) == true){
+         return "You lose! " + computerChoice + " beats " + playerChoice;
      } else {
-         return "It's a tie!"
+         return "It's a tie!";
      }
 
 }
