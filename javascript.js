@@ -1,9 +1,10 @@
+// Dictionary that specifies who beats who
 let whoBeatsWho = {
     "rock": "scissors",
     "paper": "rock",
     "scissors": "paper"
 }
-
+// Function that uses random numbers to get either rock, paper or scissors
 function getComputerChoice() {
     let randomValue = Math.floor(Math.random() * 100);
 
@@ -23,7 +24,7 @@ function getPlayerChoice(){
     let choice = prompt("Whats your move?")
     return choice;
 }
-
+//Function that checks the whoBeatsWho to see if a beats b
 function beats(a, b) {
     if (whoBeatsWho[a] == b) {
         return true
@@ -32,7 +33,7 @@ function beats(a, b) {
     } else return false
 
 }
-
+// Function that plays one round of rock paper scissors
 function rockPaperScissors(computerChoice, playerChoice) {
    
     if (beats(playerChoice.toLowerCase(), computerChoice.toLowerCase()) == true) {
@@ -47,7 +48,7 @@ function rockPaperScissors(computerChoice, playerChoice) {
      }
 
 }
-
+// function that plays five rounds of rock paper scissors and tells you who won at the end
 function game(){
     let playerWins = 0;
     let computerWins = 0;
