@@ -34,12 +34,16 @@ function beats(a, b) {
 }
 
 function rockPaperScissors(computerChoice, playerChoice) {
-     if (beats(playerChoice.toLowerCase(), computerChoice.toLowerCase()) == true) {
-        return "You win! " + playerChoice + " beats " + computerChoice;
+   
+    if (beats(playerChoice.toLowerCase(), computerChoice.toLowerCase()) == true) {
+        console.log("You win! " + playerChoice + " beats " + computerChoice);
+        return true;
     } else if (beats(computerChoice, playerChoice) == true){
-         return "You lose! " + computerChoice + " beats " + playerChoice;
+         console.log("You lose! " + computerChoice + " beats " + playerChoice);
+        return false;
      } else {
-         return "It's a tie!";
+         console.log( "It's a tie!");
+         return "tie";
      }
 
 }
@@ -50,17 +54,20 @@ function game(){
     for (let i = 0; i<5; i++){
         let computerChoice = getComputerChoice();
         let playerChoice = getPlayerChoice();
-        switch (rockPaperScissors(String(computerChoice), String(playerChoice)).charAt(4)) {
-            case "w":
+        switch (rockPaperScissors(computerChoice, playerChoice)) {
+            case true:
                 console.log("You win this round");
                 playerWins++;
                 break;
-            case "l":
+            case false:
                 console.log("You lose this round");
                 computerWins++;
                 break;
-            default:
+            case "tie":
                 console.log("You tie this round");
+                break;
+            default: 
+                console.log("Did not recognize entry, defaulted to tie.");
                 break;
         }
     }
