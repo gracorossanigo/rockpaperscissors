@@ -19,6 +19,11 @@ function getComputerChoice() {
     }
 }
 
+function getPlayerChoice(){
+    let choice = prompt("Whats your move?")
+    return choice;
+}
+
 function beats(a, b) {
     if (whoBeatsWho[a] == b) {
         return true
@@ -28,13 +33,13 @@ function beats(a, b) {
 
 }
 
-function rockPaperScissors(computerSelection, playerSelection) {
-    computerSelection = computerSelection.toLowerCase();
-    playerSelection = playerSelection.toLowerCase();
-     if (beats(playerSelection, computerSelection) === true) {
-        return "You win! " + playerSelection + " beats " + computerSelection;
-    } else if(beats(computerSelection, playerSelection) === true){
-         return "You lose! " + computerSelection + " beats " + playerSelection
+function rockPaperScissors(a, b) {
+    let computerSelectionLowercase = a.toLowerCase();
+    let playerSelectionLowercase = b.toLowerCase();
+     if (beats(playerSelectionLowercase, computerSelectionLowercase) == true) {
+        return "You win! " + playerSelectionLowercase + " beats " + computerSelectionLowercase;
+    } else if(beats(computerSelectionLowercase, playerSelectionLowercase) == true){
+         return "You lose! " + computerSelectionLowercase + " beats " + playerSelectionLowercase
      } else {
          return "It's a tie!"
      }
@@ -42,32 +47,32 @@ function rockPaperScissors(computerSelection, playerSelection) {
 }
 
 function game(){
+    let playerWins = 0;
+    let computerWins = 0;
     for (let i = 0; i<5; i++){
-        let computerSelection = getComputerChoice();
-        let playerSelection = prompt("What's your move?").toLowerCase();
-        let playerWins = 0;
-        let computerWins = 0;
-        switch (rockPaperScissors(computerSelection, playerSelection)) {
-            case "You win! " + playerSelection + " beats " + computerSelection:
-                playerWins++;
+        let computerChoice = getComputerChoice();
+        let playerChoice = getPlayerChoice();
+        switch (rockPaperScissors(String(computerChoice), String(playerChoice)).charAt(4)) {
+            case "w":
                 console.log("You win this round");
+                playerWins++;
                 break;
-            case "You lose! " + computerSelection + " beats " + playerSelection:
-                computerWins++;
+            case "l":
                 console.log("You lose this round");
+                computerWins++;
                 break;
             default:
+                console.log("You tie this round");
                 break;
         }
-        if (computerWins>playerWins){
-
-        }
-
-
     }
+    if (computerWins>playerWins){
+        console.log("You lost");
+        return "You lost";
+    } else if (playerWins>computerWins) {
+        console.log("You won");
+        return "You won";
+    } else {console.log("You won"); return "It's a tie!"}
 }
 
-let playerSelection = "rock";
-let computerSelection = getComputerChoice();
-
-console.log(rockPaperScissors(playerSelection, computerSelection))
+game();
